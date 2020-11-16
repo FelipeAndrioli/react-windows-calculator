@@ -1,0 +1,15 @@
+.calculator-visor {
+    display: flex;
+    background: none;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 100%;
+    height: 80px;
+}
+
+.calculator-visor p {
+    background: none;
+    margin-right: 10px;
+    font-size: 45px;
+    font-weight: 600;
+}

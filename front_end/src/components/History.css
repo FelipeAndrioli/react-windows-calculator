@@ -1,0 +1,18 @@
+.history {
+    background: none;
+    height: 30px;
+    width: 30px;
+}
+
+.history-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: none;
+}
+
+.history-icon:hover {
+    border-style: solid;
+}
