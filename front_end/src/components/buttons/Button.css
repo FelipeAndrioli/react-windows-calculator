@@ -1,0 +1,29 @@
+button {
+    background-color: #e2e2e2;
+    border: none;
+    width: 77px;
+    height: 48px;
+    outline: none;
+    font-size: 20px;
+    font-weight: 0;
+}
+
+button:hover {
+    background-color: lightgrey;
+}
+
+.personclassX:hover {
+    background-color: rgb(31, 105, 218);
+    color: white;
+}
+
+.personclass-:hover {
+    background-color: rgb(31, 105, 218);
+    color: white;
+}
+
+.personclass-:hover {
+    background-color: rgb(31, 105, 218);
+    color: white;
+}
+

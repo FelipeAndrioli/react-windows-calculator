@@ -42,20 +42,28 @@
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    padding-top: 100px;
+    padding-left: 2px;
+    padding-right: 2px;
     background: none;
 }
 
-.operation-button-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+.divide-icon {
+    font-size: 17px;
+}
+
+.divide-icon:hover {
     background: none;
-    top: 0;
-    width: 70px;
-    height: 250px;
-    margin-right: 2px;
+}
+
+.delete-icon {
+    font-size: 17px;
+}
+
+.delete-icon:hover {
+    background: none;
 }
 
 svg {

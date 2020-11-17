@@ -1,13 +1,21 @@
 import React from 'react'
-import Navbar from './Navbar'
-import History from './History'
+import Navbar from './header_buttons/Navbar'
+import History from './header_buttons/History'
 import Visor from './Visor'
-import OperatorButton from './OperatorButton'
+import Button from './buttons/Button'
+import * as FiIcons from 'react-icons/fi'
+import * as FaIcons from 'react-icons/fa'
 
 import './Calculator.css'
 
 function Calculator() {
-    const operations = ['/', 'X', '-', '+', '=']
+    const button_array = [
+                            ['CE', 'C', <FiIcons.FiDelete className='delete-icon'/>, <FaIcons.FaDivide className='divide-icon' />],
+                            ['7', '8', '9', 'X'],
+                            ['4', '5', '6', '-'],
+                            ['1', '2', '3', '+'],
+                            ['+/-', '0', '.', '='],
+                        ]
     return (
         <>
             <div className='CalculatorBody'>
@@ -21,13 +29,15 @@ function Calculator() {
                 </div>
                 <Visor />
                 <div className='calculator-body-down'>
-                    <div className='operation-button-container'>
-                        {operations.map((item, index) => {
-                            return (
-                                <OperatorButton operation={item} />
-                            )
-                        })}
-                    </div>
+                    {
+                        button_array.map(row => {
+                            return row.map(items => {
+                                return (
+                                    <Button type={items} />
+                                )
+                            })
+                        })
+                    }
                 </div>
             </div>
         </>
