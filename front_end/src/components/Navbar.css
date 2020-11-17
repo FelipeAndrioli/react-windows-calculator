@@ -14,7 +14,8 @@
 }
 
 .menu-bars:hover {
-    border-style: solid;
+    border: none;
+    background-color: rgb(212, 212, 212);
 }
 
 /*
