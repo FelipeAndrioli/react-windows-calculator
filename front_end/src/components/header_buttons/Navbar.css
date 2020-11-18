@@ -1,7 +1,7 @@
 .navbar {
     background: none;
-    height: 30px;
-    width: 30px;
+    height: 45px;
+    width: 60px;
 }
 
 .menu-bars {
@@ -18,22 +18,15 @@
     background-color: rgb(212, 212, 212);
 }
 
-/*
 .nav-menu {
-    background-color: none;
-    width: 250px;
-    height: 430px;
-    display: flex;
-    justify-content: center;
+    width: 0px;
+    height: 49%;
     position: fixed;
     top: 125px;
-    left: 227px;
-    transition: 850ms;
+    transition: width 0.5s;
 }
 
 .nav-menu.active {
-    background-color: #cacaca;
-    left: 480px;
-    transition: 350ms;
+    background-color: none;
+    width: 255px;
 }
-*/

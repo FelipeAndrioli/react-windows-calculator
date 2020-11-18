@@ -1,11 +1,11 @@
 import React from 'react'
 import './Visor.css'
 
-function Visor() {
+function Visor(props) {
     return (
         <>
         <div className='calculator-visor'>
-            <p>0</p>
+            <p>{props.expression}</p>
         </div>
         </>
     )
