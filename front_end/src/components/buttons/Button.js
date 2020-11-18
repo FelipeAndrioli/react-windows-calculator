@@ -4,7 +4,7 @@ import './Button.css'
 function Button(props) {
     return (
         <>
-        <button className={'personclass' + props.type}>{props.type}</button>        
+        <button className={props.index == 3 ? 'blue-act' : 'normal-act'}>{props.type}</button>        
         </>
     )
 }

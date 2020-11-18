@@ -12,18 +12,7 @@ button:hover {
     background-color: lightgrey;
 }
 
-.personclassX:hover {
-    background-color: rgb(31, 105, 218);
+.blue-act:hover {
+    background-color: rgb(96, 165, 243);
     color: white;
 }
-
-.personclass-:hover {
-    background-color: rgb(31, 105, 218);
-    color: white;
-}
-
-.personclass-:hover {
-    background-color: rgb(31, 105, 218);
-    color: white;
-}
-

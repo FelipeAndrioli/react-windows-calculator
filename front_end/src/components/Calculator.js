@@ -31,9 +31,9 @@ function Calculator() {
                 <div className='calculator-body-down'>
                     {
                         button_array.map(row => {
-                            return row.map(items => {
+                            return row.map((items, index) => {
                                 return (
-                                    <Button type={items} />
+                                    <Button index={index} type={items} />
                                 )
                             })
                         })
