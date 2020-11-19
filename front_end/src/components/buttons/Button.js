@@ -17,14 +17,14 @@ class Button extends Component {
             <>
             <button 
                 onClick={this.sendData}
-                className={
-                    this.props.index === 3 ? 'blue-act' : (typeof this.props.type === 'number' ? 'number' : 'normal-act')                  
-                }>
+                className={this.props.index === 3 ? 'blue-act' : (typeof this.props.type === 'number' ? 'number' : 'normal-act')}>
                 {this.props.type}
             </button>        
             </>
         )
     }
 }
+
+//this.props.index === 3 ? 'blue-act' : (typeof this.props.type === 'number' ? 'number' : 'normal-act')                  
 
 export default Button

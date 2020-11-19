@@ -14,7 +14,6 @@ class Calculator extends Component {
         expression: '0'
     }
 
-
     UpdateExpression = (newExpression) => {
         if (typeof newExpression === 'number' && this.state.expression == 0) {
             this.setState({ expression: null})
@@ -23,7 +22,6 @@ class Calculator extends Component {
             this.setState({ expression: this.state.expression + '' + newExpression})
         }
     }
-
 
     render() {
 

@@ -17,3 +17,16 @@
     border: none;
     background-color: rgb(212, 212, 212);
 }
+
+.nav-bottom {
+    width: 70%;
+    height: 0px;
+    top: 500px;
+    position: fixed;
+    transition: height 0.5s;
+}
+
+.nav-bottom.active {
+    background-color: none;
+    height: 100px;
+}
