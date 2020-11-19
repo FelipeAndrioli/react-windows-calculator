@@ -9,7 +9,22 @@ import * as FaIcons from 'react-icons/fa'
 import './Calculator.css'
 
 class Calculator extends Component {
-    state = { expression: '0' }
+    
+    state = {
+        expression: '0'
+    }
+
+
+    UpdateExpression = (newExpression) => {
+        if (typeof newExpression === 'number' && this.state.expression == 0) {
+            this.setState({ expression: null})
+            this.setState({ expression: newExpression})
+        } else {
+            this.setState({ expression: this.state.expression + '' + newExpression})
+        }
+    }
+
+
     render() {
 
         const button_array = [
@@ -37,7 +52,7 @@ class Calculator extends Component {
                             button_array.map(row => {
                                 return row.map((items, index) => {
                                     return (
-                                        <Button index={index} type={items} />
+                                        <Button callBack={this.UpdateExpression} index={index} type={items} />
                                     )
                                 })
                             })
