@@ -1,7 +1,7 @@
 import React, { Component, state } from 'react'
 import Navbar from './header_buttons/Navbar'
 import History from './header_buttons/History'
-import Visor from './Visor'
+import Visor from './calculator_visor/Visor'
 import Button from './buttons/Button'
 import * as FiIcons from 'react-icons/fi'
 import * as FaIcons from 'react-icons/fa'
@@ -11,15 +11,42 @@ import './Calculator.css'
 class Calculator extends Component {
     
     state = {
-        expression: '0'
+        expression : [],
+        partial_expression: '0',
+        operations: [],
+        partial_operations: '',
     }
 
     UpdateExpression = (newExpression) => {
-        if (typeof newExpression === 'number' && this.state.expression == 0) {
-            this.setState({ expression: null})
-            this.setState({ expression: newExpression})
+        console.log('Received expression: ' + newExpression)
+        if (typeof newExpression === 'number') {
+            if (this.state.partial_expression == '0') {
+                this.setState({ partial_expression: newExpression })
+            } else {
+                this.setState({ partial_expression: this.state.partial_expression + '' + newExpression })
+            }
+        } else if (newExpression === 'full-delete') {
+            this.setState({ 
+                expression: [],
+                partial_expression: '0',
+                operations: [],
+                partial_operations: '',
+            })
+        } else if (newExpression === 'partial-delete') {
+            this.setState({ partial_expression: '0' })
+        } else if (newExpression === 'digit-delete') {
+            this.setState({ 
+                partial_expression: Number((this.state.partial_expression.toString()).slice(0, -1))
+            })
+        } else if (newExpression === 'signal-change') {
+            this.setState({ partial_expression: (this.state.partial_expression * -1)})
+        } else if (newExpression === 'dot') {
+            if (!(this.state.partial_expression.toString().includes('.'))) {
+                this.setState({ partial_expression: this.state.partial_expression.toString() + '.'})
+            }
         } else {
-            this.setState({ expression: this.state.expression + '' + newExpression})
+            //operation
+            //trigger
         }
     }
 
@@ -44,7 +71,7 @@ class Calculator extends Component {
                         </div>
                         <History />
                     </div>
-                    <Visor expression={this.state.expression} />
+                    <Visor expression={this.state.partial_expression} />
                     <div className='calculator-body-down'>
                         {
                             button_array.map(row => {
