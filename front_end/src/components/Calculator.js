@@ -47,6 +47,18 @@ class Calculator extends Component {
         } else {
             //operation
             //trigger
+            switch (newExpression) {
+                case '+':
+                    break;
+                case '-':
+                    break;
+                case '*':
+                    break;
+                case '/':
+                    break;
+                case '=':
+                    break;
+            }
         }
     }
 
