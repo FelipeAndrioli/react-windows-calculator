@@ -1,13 +1,35 @@
-.calculator-visor {
+.visor {
+    display: flex;
+    background: none;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: 100%;
+    height: 28%;
+}
+
+.entire-expression {
+    display: flex;
+    justify-content: flex-end;
+    background: none;
+    margin-right: 15px;
+    height: 20px;
+}
+
+.entire-expression p {
+    background: none;
+    color: rgb(170, 165, 165);
+}
+
+.partial-expression {
     display: flex;
     background: none;
     justify-content: flex-end;
     align-items: flex-end;
     width: 100%;
-    height: 140px;
+    height: 70%;
 }
 
-.calculator-visor p {
+.partial-expression p {
     background: none;
     margin-right: 10px;
     font-size: 45px;
