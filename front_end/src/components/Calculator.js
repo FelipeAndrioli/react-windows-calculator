@@ -8,29 +8,40 @@ import * as FaIcons from 'react-icons/fa'
 
 import './Calculator.css'
 
-const test = []
-
 class Calculator extends Component {
     
     state = {
         expression : [],
         partial_expression: 0,
+        partial_operation: '',
+    }
+
+    Placeholder = (expression) => {
+        console.log("Placeholder function: " + expression)
+        let temp = 21
+        return temp
     }
 
     UpdateExpression = (newExpression) => {
         console.log('Received expression: ' + newExpression)
         if (typeof newExpression === 'number') {
-            if (this.state.partial_expression == 0) {
+            //if the received is a number
+            if (this.state.partial_expression === 0) {
+                //if there is no number before the new one
                 this.setState({ partial_expression: newExpression })
             } else {
-                if (
+                //if the new number is not the first one
+                if (                    
+                    //if the last thing digited was a signal
                     this.state.expression[this.state.expression.length - 1] === '+' || 
                     this.state.expression[this.state.expression.length - 1] === '-' || 
                     this.state.expression[this.state.expression.length - 1] === '*' || 
                     this.state.expression[this.state.expression.length - 1] === '/' 
                 ) {
+                    //add directly to the expression
                     this.setState({ partial_expression: newExpression })
                 } else {
+                    //concat numbers to create a new one
                     this.setState({ partial_expression: Number(this.state.partial_expression + '' + newExpression) })
                 }
             }
@@ -52,73 +63,36 @@ class Calculator extends Component {
                 this.setState({ partial_expression: this.state.partial_expression + '.'})
             }
         } else {
-            //operation
-            //trigger
+            //if the new expression is a signal
+            //need to add the partial expression to the expression and the new signal too
             console.log(this.state.expression)
             switch (newExpression) {
                 case '+':
+                    this.state.expression.push(this.state.partial_expression, newExpression)
+                    break;
+                case '-':
+                    this.state.expression.push(this.state.partial_expression, newExpression)
+                    break;
+                case 'X':
+                    this.state.expression.push(this.state.partial_expression, newExpression)
+                    break;
+                case '/':
+                    this.state.expression.push(this.state.partial_expression, newExpression)
+                    break;
+                case '=':
                     if (
-                        //update signal
+                        this.state.expression[this.state.expression.length - 1] === '+' ||
                         this.state.expression[this.state.expression.length - 1] === '-' ||
                         this.state.expression[this.state.expression.length - 1] === '/' ||
                         this.state.expression[this.state.expression.length - 1] === '*' 
                     ) {
-                        this.state.expression.pop()
-                        this.state.expression.push(newExpression)
-                        console.log(this.state.expression)
-                    } else {
-                        //add partial expression and new signal to expression
                         this.state.expression.push(this.state.partial_expression)
-                        this.state.expression.push(newExpression)
-                        console.log(this.state.expression)
+                        console.log(this.Placeholder(this.state.expression))
+                    } else {
+                        console.log(this.Placeholder(this.state.expression))
                     }
                     break;
-                case '-':
-                    if (
-                        this.state.expression[this.state.expression.length - 1] === '/' ||
-                        this.state.expression[this.state.expression.length - 1] === '*' ||
-                        this.state.expression[this.state.expression.length - 1] === '+' 
-                    ) {
-                        this.state.expression.pop()
-                        this.state.expression.push(newExpression)
-                        console.log(this.state.expression)
-                    } else {
-                        this.state.expression.push(this.state.partial_expression)
-                        this.state.expression.push(newExpression)
-                        console.log(this.state.expression)
-                    }
-                    break;
-                case 'X':
-                    if (
-                        this.state.expression[this.state.expression.length - 1] === '-' ||
-                        this.state.expression[this.state.expression.length - 1] === '/' ||
-                        this.state.expression[this.state.expression.length - 1] === '+' 
-                    ) {
-                        this.state.expression.pop()
-                        this.state.expression.push('*')
-                        console.log(this.state.expression)
-                    } else {
-                        this.state.expression.push(this.state.partial_expression)
-                        this.state.expression.push('*')
-                        console.log(this.state.expression)
-                    }
-                    break;
-                case '/':
-                    if (
-                        this.state.expression[this.state.expression.length - 1] === '-' ||
-                        this.state.expression[this.state.expression.length - 1] === '*' ||
-                        this.state.expression[this.state.expression.length - 1] === '+' 
-                    ) {
-                        this.state.expression.pop()
-                        this.state.expression.push(newExpression)
-                        console.log(this.state.expression)
-                    } else {
-                        this.state.expression.push(this.state.partial_expression)
-                        this.state.expression.push(newExpression)
-                        console.log(this.state.expression)
-                    }
-                    break;
-                case '=':
+                default:
                     break;
             }
         }
