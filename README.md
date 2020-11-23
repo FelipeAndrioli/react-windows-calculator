@@ -44,3 +44,17 @@ The calculator design will be the Windows 10 calculator, just because I can see 
 - REST invocation from React -> Springboot -> REST to ESB
 - Write a program using Apache CXF
 - Write a program in Apache Camel
+
+## How to run
+
+### Front end
+
+To run the front end for now (without containers), just need to have Node JS installed and run the following
+commands inside front end folder:
+
+	npm install
+	npm start
+
+And after that just check out the localhost.
+
+### Back end
