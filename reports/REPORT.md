@@ -78,3 +78,8 @@ components and meaning are the following:
 
 Now that I've finished the get started guide from Spring Boot, I'll put it on a new folder and
 create a new back end project to advance with the application.
+
+After completing the get started guide from Spring Boot site, I wrote a sum service, where it 
+receives two numbers as parameters and return the sum of them. I tested it using the software
+Postman and it returns the correct result. However some questions remain on my mind, about
+Model and how to use it in the right way.
