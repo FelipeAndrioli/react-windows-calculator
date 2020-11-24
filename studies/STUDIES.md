@@ -1,34 +1,152 @@
 # My studies for this project
 
-- Enterprise Java Beans (EJB) - Is a server-side component that ENCAPSULATES the BUSINESS LOGIC of an application. The business logic is the code that fulfills the purpose of the application. It DOES NOT perform display of business data (presentation) or perform operations directly the database (persistance).
-- Enterprise Service Bus (ESB) - Implements a communication system between mutually interaction software application in a service-oriented architecture (SOA). It represents a software architecture for distributed computing, and is a special variant of the more general client-server model, wherein any application may behave as server or client. ESB promotes agility and flexibility with regard to high-level protocol communication between applications. Its primary use is in enterprise application integration (EAI) of heterogeneous and complex service landscapes.
-    - Messaging Queue!!!!!
-        - All the "requests" goes to a queue to not get lost if some service is offline, when the service is up again then the request is made.
+### Enterprise Java Beans (EJB)
 
-    ESB Provides:
+Server-side software component that encapsulates business logic of an application.
 
-    - Routing Services
-    - Message/Data transformers
-    - Security via authentication
-    - Logging services
+### Session Beans
 
-- Apache CFX
+- Business Rules
+- @Stateless
+    - Used to implement business rules
+    - Can be accessed Local or Remote
+        - Local
+            - Does not need to create an interface with the methods
+            - If create, must note with: @Local (InterfaceName.class)
+        - Remote
+            - Accessible from other computers
+            - Need to create an interface with methods
+            - Must note with: @Remote(InterfaceName.class)
+    - Doesn't keep state
+    - The operation needs to be finished in only one call
+    - Ex: Consult or insert data
 
-    Apache CFX is an open-source, fully featured Web services framework. 
+    ### Implementation example:
+```
+    @Stateless
+    public class BibliotecaBean {
+        public int somar(int a, int b) {
+            
+            return a + b;
+        
+        }
 
-    CXF is a services framework. It allows you to create SOAP, REST and even CORBA services. It is a component used inside Camel, CXF is not a subset of Camel. Camel will allow you to provide and consume web services using CXF.
+        public int subtrair(int a, int b) {
 
-- Apache Camel
+            return a - b;
 
-    Apache Camel is a powerful open source integration framework based on
-    known Enterprise Integration Patterns with powerful Bean Integration.
+        }
+    }
 
-    Camel lets you create the Enterprise Integration Patterns to implement routing
-    and mediation rules in either a Java based Domain Specific Language
-    (or Fluent API), via Spring based Xml Configuration files or via the Scala DSL.
-    This means you get smart completion of routing rules in your IDE whether in
-    your Java, Scala or XML editor.
+    @Named
+    @RequestScoped
+    public class CalculosMB {
 
-    Camel is a EIP (Enterprise Integration Pattern) framework which allows you to do things such as route a file to a web service. Or expose a SOAP service that talks to JMS queues. 
+        @Inject
+        private Bibliioteca biblioteca;
 
-    Camel orchestrates the various components into routes that allows various systems to integrate.
+        private int resultado;
+
+        public void calcular() {
+
+            this.resultado = this.biblioteca.somar(10, 20);
+
+        }
+
+    }
+```
+
+    - To use this library the notation @Inject (or @EJB) need to used to inject the Bean
+    - The container inject the correct dependency
+    - After it's just use the injected object
+    - Can be used in:
+        - Servlet
+        - ManagedBean
+        - Bean
+        - Pojo
+
+- @Stateful
+    - Used to implement business rules
+    - Keep state
+    - Can't handle any client, because need to keep their data (state) by client
+    - Can be accessed Local or Remote
+    - Ex: Shopping cart
+
+    ### Implementation example
+```
+    @Stateful
+    public class CarrinhoBean {
+        private Set<Produto> produtos = new HashSet<Produto>();
+        public void adicionar(Produto p) {
+            this.produtor.add(p);
+        }
+
+        public void remover(Produto p) {
+            this.produtos.remove(p);
+        }
+    }
+```
+
+- @Singleton
+    - The EJB Containner create only one Bean instance
+    - Keep only one instance while all the application
+    - Share data between all the application users
+    - Can be accessed Local or Remote
+    - Ex: Users count, Cache, Shared data...
+
+    ### Implementation example
+```
+    @Singleton
+    public class ContadorBean {
+        private inc contador = 0;
+
+        public void adicionar() {
+            this.contador++;
+        }
+
+        public int getContador() {
+            return this.contador;
+        }
+    }
+````
+
+### Message-driven Beans
+
+    - @MessageDriven
+        - Bean with tha capacity of processing async messages
+        - Act like a JMS Listener: 
+            - JMS - Java Messaging System
+            - Receive and consume JMS messages
+            - Proccess the messages
+        - JMS Architecture
+            - JMS Provider: Java EE implementations with JMS support
+            - JMS Clients: Applications or components to create and consum messages
+            - Messages: Communication objects between two JMS Clients
+            - Managed objects: JMS configurated objects to client use - destiny and serder of connections (connection factories)
+        
+    ### Message types
+
+    - Point-to-Point
+        - Emitters, Receivers and queues
+        - Each message had only one consumer
+        - Each message is addressed to a specific queue
+        - Receivers take their messages from specific queue
+        - Queue await all the messages to be consumed or expired
+    
+    - Publish/Subscribe
+        - Emitters send messages to a topic
+        - A topic may have many subscribers
+        - Beans may subscribe topics
+        - Topics await the messages to be consumed
+        - The Bean needs to be active  to consume the topic messages
+
+    ### Message consum
+
+    - Sync
+        - The consumer get the message calling ```receive()```
+        - ````receive()``` blocks until the message is obtained, or expired if the message does not arrive within a certain time
+
+    - Async
+        - An application may register a Message listener as message consumer
+        - Aways a message arrive, the method ```onMessage()``` from listener is called
+        - On JavaEE, the MDSs act like Message Listeners
