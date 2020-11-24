@@ -1,10 +1,10 @@
-package com.calc_microservices.multiply;
+package com.calc_microservices.division;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MultiplyApplicationTests {
+class DivisionApplicationTests {
 
 	@Test
 	void contextLoads() {

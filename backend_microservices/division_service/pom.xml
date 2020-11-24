@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.calc_microservices</groupId>
-	<artifactId>multiply</artifactId>
+	<artifactId>division</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>multiply</name>
+	<name>division</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

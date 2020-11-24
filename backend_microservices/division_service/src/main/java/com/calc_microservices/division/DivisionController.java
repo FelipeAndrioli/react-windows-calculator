@@ -1,28 +1,27 @@
-package com.calc_microservices.multiply;
+package com.calc_microservices.division;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class MultiplyController {
-
-    @PostMapping("/multiply")
-    public long mult(
+public class DivisionController {
+    
+    @PostMapping("/division")
+    public double div(
         @RequestParam String leftN,
         @RequestParam String rightN
     ) {
-
-        long leftNumber, rightNumber;
+        double leftNumber, rightNumber;
 
         try {
-            leftNumber = Long.valueOf(leftN);
+            leftNumber = Double.parseDouble(leftN);
         } catch (NumberFormatException ex) {
             leftNumber = 0;
         }
 
         try {
-            rightNumber = Long.valueOf(rightN);
+            rightNumber = Double.parseDouble(rightN);
         } catch (NumberFormatException ex) {
             rightNumber = 0;
         }
@@ -32,7 +31,7 @@ public class MultiplyController {
             rightNumber
         );
 
-        long result = expression.getResult();
+        double result = expression.getResult();
 
         return result;
     }

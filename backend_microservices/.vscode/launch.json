@@ -38,6 +38,16 @@
             "mainClass": "com.calc_microservices.multiply.MultiplyApplication",
             "projectName": "multiply",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-DivisionApplication<division>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.calc_microservices.division.DivisionApplication",
+            "projectName": "division",
+            "args": ""
         }
     ]
 }
