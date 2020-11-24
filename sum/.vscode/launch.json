@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SumApplication<sum>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.calc_microservices.sum.SumApplication",
+            "projectName": "sum",
+            "args": ""
+        }
+    ]
+}

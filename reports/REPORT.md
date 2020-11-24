@@ -83,3 +83,9 @@ After completing the get started guide from Spring Boot site, I wrote a sum serv
 receives two numbers as parameters and return the sum of them. I tested it using the software
 Postman and it returns the correct result. However some questions remain on my mind, about
 Model and how to use it in the right way.
+
+After learn how to configure and execute the Spring Boot code the subtraction service works
+without any kind of problem, the remaining (multiply and division) must works with no problem
+too.
+
+

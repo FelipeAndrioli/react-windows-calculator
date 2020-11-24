@@ -1,15 +1,14 @@
-package com.calc_microservices.sum;
+package com.calc_microservices.subtraction;
 
-//import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class SumController {
+public class SubtractionController {
 
-    @PostMapping("/sum")
-    public long sum(
+    @PostMapping("/subtract")
+    public long sub(
         @RequestParam String leftN,
         @RequestParam String rightN
     ) {
@@ -28,7 +27,7 @@ public class SumController {
             rightNumber = 0;
         }
 
-        Expression expression = new Expression(
+        Expression expression = new Expression (
             leftNumber,
             rightNumber
         );

@@ -1,0 +1,33 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SumApplication<sum>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.calc_microservices.sum.SumApplication",
+            "projectName": "sum",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SubtractionApplication",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.calc_microservices.subtraction.SubtractionApplication",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SubtractionApplication<subtraction>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.calc_microservices.subtraction.SubtractionApplication",
+            "projectName": "subtraction",
+            "args": ""
+        }
+    ]
+}
