@@ -28,6 +28,16 @@
             "mainClass": "com.calc_microservices.subtraction.SubtractionApplication",
             "projectName": "subtraction",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-MultiplyApplication<multiply>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.calc_microservices.multiply.MultiplyApplication",
+            "projectName": "multiply",
+            "args": ""
         }
     ]
 }
