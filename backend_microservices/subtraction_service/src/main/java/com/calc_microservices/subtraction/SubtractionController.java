@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class SubtractionController {
 
     @PostMapping("/subtract")
-    public long sub(
+    public double sub(
         @RequestParam String leftN,
         @RequestParam String rightN
     ) {
-        long leftNumber;
-        long rightNumber;
+        double leftNumber;
+        double rightNumber;
 
         try {
-            leftNumber = Long.valueOf(leftN);
+            leftNumber = Double.parseDouble(leftN);
         } catch (NumberFormatException ex) {
             leftNumber = 0;
         }
 
         try {
-            rightNumber = Long.valueOf(rightN);
+            rightNumber = Double.parseDouble(rightN);
         } catch (NumberFormatException ex) {
             rightNumber = 0;
         }
@@ -32,7 +32,7 @@ public class SubtractionController {
             rightNumber
         );
 
-        long result = expression.getResult();
+        double result = expression.getResult();
 
         return result;
     }

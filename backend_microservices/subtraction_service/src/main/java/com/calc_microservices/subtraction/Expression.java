@@ -2,32 +2,32 @@ package com.calc_microservices.subtraction;
 
 public class Expression {
 
-    private long leftNumber;
-    private long rightNumber;
+    private double leftNumber;
+    private double rightNumber;
 
-    public Expression(long leftNumber, long rightNumber) {
+    public Expression(double leftNumber, double rightNumber) {
         this.leftNumber = leftNumber;
         this.rightNumber = rightNumber;
     }
 
-    public void setLeftNumber(long leftNumber) {
+    public void setLeftNumber(double leftNumber) {
         this.leftNumber = leftNumber;
     }
 
-    public void setRightNumber(long rightNumber) {
+    public void setRightNumber(double rightNumber) {
         this.rightNumber = rightNumber;
     }
 
-    public long getLeftNumber() {
+    public double getLeftNumber() {
         return this.leftNumber;
     }
 
-    public long getRightNumber() {
+    public double getRightNumber() {
         return this.rightNumber;
     }
 
-    public long getResult() {
-        long result = 0;
+    public double getResult() {
+        double result = 0;
 
         result = leftNumber - rightNumber;
 
