@@ -5,6 +5,7 @@ import Visor from './calculator_visor/Visor'
 import Button from './buttons/Button'
 import * as FiIcons from 'react-icons/fi'
 import * as FaIcons from 'react-icons/fa'
+import SolveExpression from '../services/SolveExpressionService'
 
 import './Calculator.css'
 
@@ -20,6 +21,15 @@ class Calculator extends Component {
         console.log("Placeholder function: " + expression)
         let temp = 21
         return temp
+    }
+
+    componentDidMount() {
+        SolveExpression.getResult(leftNumber, operation, rightNumber).then((response) => {
+            this.setState({
+                expression: [],
+                partial_operation: response.data
+            })
+        })
     }
 
     UpdateExpression = (newExpression) => {
@@ -87,7 +97,7 @@ class Calculator extends Component {
                         this.state.expression[this.state.expression.length - 1] === '*' 
                     ) {
                         this.state.expression.push(this.state.partial_expression)
-                        console.log(this.Placeholder(this.state.expression))
+                        console.log(this.componentDidMount.getResult(this.state.expression))
                     } else {
                         console.log(this.Placeholder(this.state.expression))
                     }

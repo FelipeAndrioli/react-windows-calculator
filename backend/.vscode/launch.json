@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ApirestApplication<apirest>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.operations.apirest.ApirestApplication",
+            "projectName": "apirest",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApirestApplication<apirest>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.apirest.apirest.ApirestApplication",
+            "projectName": "apirest",
+            "args": ""
+        }
+    ]
+}

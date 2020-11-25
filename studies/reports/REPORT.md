@@ -90,3 +90,8 @@ too.
 
 All the arithmetic services are working, now I need understand a little bit more about EJB and
 ESB, and see if I need to change something in the archtecture of my code.
+
+I`m going to study and deploy the microservices and the front end and I`m going to start with front
+end first, I already worked with Express to deploy, so I hope to be easy and fast.
+
+
