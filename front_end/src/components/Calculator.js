@@ -23,15 +23,6 @@ class Calculator extends Component {
         return temp
     }
 
-    componentDidMount() {
-        SolveExpression.getResult(leftNumber, operation, rightNumber).then((response) => {
-            this.setState({
-                expression: [],
-                partial_operation: response.data
-            })
-        })
-    }
-
     UpdateExpression = (newExpression) => {
         console.log('Received expression: ' + newExpression)
         if (typeof newExpression === 'number') {
@@ -97,8 +88,10 @@ class Calculator extends Component {
                         this.state.expression[this.state.expression.length - 1] === '*' 
                     ) {
                         this.state.expression.push(this.state.partial_expression)
-                        console.log(this.componentDidMount.getResult(this.state.expression))
+                        //console.log(this.componentDidUpdate.getResult(this.state.expression))
+                        console.log(this.Placeholder(this.state.expression))
                     } else {
+                        //console.log(this.componentDidUpdate.getResult(this.state.expression))
                         console.log(this.Placeholder(this.state.expression))
                     }
                     break;

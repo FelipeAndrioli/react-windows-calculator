@@ -7,8 +7,8 @@ class SolveExpression {
     getResult(leftNumber, operation, rightNumber) {
             axios.get(EXPRESSION_REST_API_URL, { params: { 
                 leftN: leftNumber, 
-                arithmeticOperation: 
-                operation, rightN: rightNumber
+                arithmeticOperation: operation, 
+                rightN: rightNumber
             }});        
         };
 }
