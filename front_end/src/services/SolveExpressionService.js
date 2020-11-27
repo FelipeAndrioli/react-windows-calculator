@@ -1,16 +1,20 @@
-import axios from 'axios'
-
-const EXPRESSION_REST_API_URL = 'http://localhost:8080/api/arithmeticoperation';
+const axios = require('axios')
 
 class SolveExpression {
+
+    solveExpression = async (leftN, operation, rightN) => {
+        try {
+            return await axios.get('http://localhost:8080/', {
+                params: {
+                    leftN: leftN,
+                    arithmeticOperation: operation,
+                    rightN: rightN
+                }
+            })
+        } catch (error) {
+            console.log(error)       
+        }
+    }
     
-    getResult(leftNumber, operation, rightNumber) {
-            axios.get(EXPRESSION_REST_API_URL, { params: { 
-                leftN: leftNumber, 
-                arithmeticOperation: operation, 
-                rightN: rightNumber
-            }});        
-        };
 }
 
-export default new SolveExpression()

@@ -5,7 +5,7 @@ import Visor from './calculator_visor/Visor'
 import Button from './buttons/Button'
 import * as FiIcons from 'react-icons/fi'
 import * as FaIcons from 'react-icons/fa'
-import SolveExpression from '../services/SolveExpressionService'
+import axios from 'axios'
 
 import './Calculator.css'
 
@@ -69,31 +69,14 @@ class Calculator extends Component {
             console.log(this.state.expression)
             switch (newExpression) {
                 case '+':
-                    this.state.expression.push(this.state.partial_expression, newExpression)
                     break;
                 case '-':
-                    this.state.expression.push(this.state.partial_expression, newExpression)
                     break;
                 case 'X':
-                    this.state.expression.push(this.state.partial_expression, newExpression)
                     break;
                 case '/':
-                    this.state.expression.push(this.state.partial_expression, newExpression)
                     break;
                 case '=':
-                    if (
-                        this.state.expression[this.state.expression.length - 1] === '+' ||
-                        this.state.expression[this.state.expression.length - 1] === '-' ||
-                        this.state.expression[this.state.expression.length - 1] === '/' ||
-                        this.state.expression[this.state.expression.length - 1] === '*' 
-                    ) {
-                        this.state.expression.push(this.state.partial_expression)
-                        //console.log(this.componentDidUpdate.getResult(this.state.expression))
-                        console.log(this.Placeholder(this.state.expression))
-                    } else {
-                        //console.log(this.componentDidUpdate.getResult(this.state.expression))
-                        console.log(this.Placeholder(this.state.expression))
-                    }
                     break;
                 default:
                     break;
