@@ -6,6 +6,8 @@ import Button from './buttons/Button'
 import * as FiIcons from 'react-icons/fi'
 import * as FaIcons from 'react-icons/fa'
 
+import axios from 'axios'
+
 import './Calculator.css'
 
 class Calculator extends Component {
@@ -14,6 +16,25 @@ class Calculator extends Component {
         expression : [],
         partial_expression: 0,
         partial_operation: '',
+    }
+
+    GetResult = async (left, op, right) => {
+        await axios.get('https://localhost:8080/api/arithmeticoperation', {
+            params: {
+                leftN: left,
+                arithmeticOperation: op,
+                rightN: right
+            }
+        })
+        .then(response => {
+            this.setState({ 
+                expression: [Number(response.data)],
+                partial_expression: Number(response.data)
+            })
+        })
+        .catch(function(error) {
+            console.log(error)
+        })
     }
 
     Placeholder = (expression) => {
@@ -65,6 +86,7 @@ class Calculator extends Component {
         } else {
             //if the new expression is a signal
             //need to add the partial expression to the expression and the new signal too
+
             console.log(this.state.expression)
             switch (newExpression) {
                 case '+':
@@ -124,9 +146,18 @@ class Calculator extends Component {
                         this.state.expression.push(this.state.partial_expression)
                         this.setState({ partial_expression: 0 })
                         //calls api
+                        console.log("Left: " + this.state.expression[0])
+                        console.log("Operation: " + this.state.expression[1])
+                        console.log("Right: " + this.state.expression[2])
+
+                        this.GetResult(this.state.expression[0], this.state.expression[1], this.state.expression[2])
                     } else {
-                        console.log('Developing')
                         //calls api
+                        console.log("Left: " + this.state.expression[0])
+                        console.log("Operation: " + this.state.expression[1])
+                        console.log("Right: " + this.state.expression[2])
+                        
+                        this.GetResult(this.state.expression[0], this.state.expression[1], this.state.expression[2])
                     }
                     break;
                 default:
