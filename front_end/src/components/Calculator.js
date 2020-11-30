@@ -5,7 +5,6 @@ import Visor from './calculator_visor/Visor'
 import Button from './buttons/Button'
 import * as FiIcons from 'react-icons/fi'
 import * as FaIcons from 'react-icons/fa'
-import axios from 'axios'
 
 import './Calculator.css'
 
@@ -69,14 +68,66 @@ class Calculator extends Component {
             console.log(this.state.expression)
             switch (newExpression) {
                 case '+':
+                    if (
+                        this.state.expression[this.state.expression.length - 1] === '-' ||
+                        this.state.expression[this.state.expression.length - 1] === '/' ||
+                        this.state.expression[this.state.expression.length - 1] === '*'
+                    ) {
+                        this.state.expression.pop()
+                        this.state.expression.push(newExpression)
+                    } else {
+                        this.state.expression.push(this.state.partial_expression, newExpression)
+                        this.setState ({ partial_expression: 0 })
+                    }                              
                     break;
                 case '-':
+                    if (
+                        this.state.expression[this.state.expression.length - 1] === '+' ||
+                        this.state.expression[this.state.expression.length - 1] === '/' ||
+                        this.state.expression[this.state.expression.length - 1] === '*'
+                    ) {
+                        this.state.expression.pop()
+                        this.state.expression.push(newExpression)
+                    } else {
+                        this.state.expression.push(this.state.partial_expression, newExpression)
+                        this.setState ({ partial_expression: 0 })
+                    }                  
                     break;
-                case 'X':
+                case '*':
+                    if (
+                        this.state.expression[this.state.expression.length - 1] === '-' ||
+                        this.state.expression[this.state.expression.length - 1] === '/' ||
+                        this.state.expression[this.state.expression.length - 1] === '+'
+                    ) {
+                        this.state.expression.pop()
+                        this.state.expression.push(newExpression)
+                    } else {
+                        this.state.expression.push(this.state.partial_expression, newExpression)
+                        this.setState ({ partial_expression: 0 })
+                    }                  
                     break;
                 case '/':
+                    if (
+                        this.state.expression[this.state.expression.length - 1] === '-' ||
+                        this.state.expression[this.state.expression.length - 1] === '+' ||
+                        this.state.expression[this.state.expression.length - 1] === '*'
+                    ) {
+                        this.state.expression.pop()
+                        this.state.expression.push(newExpression)
+                    } else {
+                        this.state.expression.push(this.state.partial_expression, newExpression)
+                        this.setState ({ partial_expression: 0 })
+                    }                    
                     break;
                 case '=':
+                    if (this.state.partial_expression !== 0 && typeof this.state.expression[this.state.expression.length - 1] === 'string') {
+                        this.state.expression.push(this.state.partial_expression)
+                        this.setState({ partial_expression: 0 })
+                        //calls api
+                    } else {
+                        console.log('Developing')
+                        //calls api
+                    }
                     break;
                 default:
                     break;
@@ -111,7 +162,7 @@ class Calculator extends Component {
                             button_array.map(row => {
                                 return row.map((items, index) => {
                                     return (
-                                        <Button callBack={this.UpdateExpression} index={index} type={items} />
+                                        <Button callBack={this.UpdateExpression} index={index} type={items} key={index} />
                                     )
                                 })
                             })

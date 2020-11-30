@@ -7,7 +7,7 @@ class Visor extends Component {
         <>
             <div className='visor'>
                 <div className='entire-expression'>                    
-                    <p>{this.props.partial_expression}</p>
+                    <p>{this.props.expression}</p>
                 </div>
                 <div className='partial-expression'>
                     <p>{this.props.partial_expression}</p>

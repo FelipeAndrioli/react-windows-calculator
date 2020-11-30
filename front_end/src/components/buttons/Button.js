@@ -10,6 +10,8 @@ class Button extends Component {
             this.props.callBack('full-delete')
         } else if (this.props.type === 'CE') {
             this.props.callBack('partial-delete')
+        } else if (this.props.type === 'X') {
+            this.props.callBack('*')
         } else if (typeof this.props.type === 'object') {
             if (this.props.index === 2) {
                 this.props.callBack('digit-delete')
