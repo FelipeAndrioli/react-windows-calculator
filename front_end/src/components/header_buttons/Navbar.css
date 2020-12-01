@@ -20,7 +20,7 @@
 
 .nav-menu {
     width: 0px;
-    height: 49%;
+    height: 44%;
     position: fixed;
     top: 125px;
     transition: width 0.5s;

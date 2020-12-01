@@ -19,7 +19,7 @@ class Calculator extends Component {
     }
 
     GetResult = async (left, op, right) => {
-        await axios.get('https://localhost:8080/api/arithmeticoperation', {
+        await axios.get('http://localhost:8080/api/arithmeticoperation', {
             params: {
                 leftN: left,
                 arithmeticOperation: op,
@@ -28,7 +28,7 @@ class Calculator extends Component {
         })
         .then(response => {
             this.setState({ 
-                expression: [Number(response.data)],
+                expression: [],
                 partial_expression: Number(response.data)
             })
         })
