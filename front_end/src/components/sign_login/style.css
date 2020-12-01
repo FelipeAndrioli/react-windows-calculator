@@ -1,0 +1,37 @@
+input {
+    text-align: center;
+    height: 30px;
+    outline: none;
+    border: none;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
+input.middle:focus {
+    outline: 0;
+    border: none;
+}
+
+::placeholder  {
+    text-align: center;
+}
+
+.sign-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-button {
+    width: 100%;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-button {
+    width: 100%;
+}

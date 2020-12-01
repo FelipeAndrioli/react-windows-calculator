@@ -24,9 +24,19 @@
     position: fixed;
     top: 125px;
     transition: width 0.5s;
+    overflow: hidden;
 }
 
 .nav-menu.active {
     background-color: none;
     width: 255px;
 }
+
+.select-login-button {
+    width: 50%;
+}
+
+.select-signin-button {
+    width: 50%;
+}
+
