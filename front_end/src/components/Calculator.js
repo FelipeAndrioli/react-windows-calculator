@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from './header_buttons/Navbar'
-import History from './header_buttons/History'
+import HistoryButton from './header_buttons/HistoryButton'
+import HistoryBar from './nav/HistoryBar'
 import Visor from './calculator_visor/Visor'
 import Button from './buttons/Button'
 import * as FiIcons from 'react-icons/fi'
@@ -16,6 +17,8 @@ class Calculator extends Component {
         expression : [],
         partial_expression: 0,
         partial_operation: '',
+        navbar: false,
+        historybar: false,
     }
 
     GetResult = async (left, op, right) => {
@@ -41,6 +44,14 @@ class Calculator extends Component {
         console.log("Placeholder function: " + expression)
         let temp = 21
         return temp
+    }
+
+    UpdateNavBar = (turn) => {
+        this.setState({ navbar: turn })
+    }
+
+    UpdateHistoryBar = (turn) => {
+        this.setState({ historybar: turn })
     }
 
     UpdateExpression = (newExpression) => {
@@ -178,14 +189,14 @@ class Calculator extends Component {
     
         return (
             <>
-                <div className='CalculatorBody'>
+                <div className='CalculatorBody'>                    
                     <header className='CalculatorHeader'>Calculator</header>
                     <div className='CalculatorSubHeader'>
                         <Navbar />
                         <div className='title-container'>
                             <p>Standard</p>
                         </div>
-                        <History />
+                        <HistoryButton bottombar={this.state.historybar} callBack={this.UpdateHistoryBar} />
                     </div>
                     <Visor expression={this.state.expression} partial_expression={this.state.partial_expression} />
                     <div className='calculator-body-down'>
@@ -199,6 +210,7 @@ class Calculator extends Component {
                             })
                         }
                     </div>
+                    <HistoryBar bottombar={this.state.historybar} />
                 </div>
             </>
         )

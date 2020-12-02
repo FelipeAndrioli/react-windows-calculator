@@ -1,0 +1,15 @@
+
+.nav-bottom {
+    background-color: none;
+    width: 36%;
+    height: 0%;
+    position: fixed;
+    bottom: 100px;
+    transition: height 0.5s;
+    overflow: hidden;
+}
+
+.nav-bottom.active {
+    background-color: none;
+    height: 255px;
+}

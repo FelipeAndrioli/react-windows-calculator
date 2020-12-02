@@ -59,7 +59,6 @@ class Button extends Component {
                 onClick={this.sendData}
                 className={classBuilder}>
                 {this.props.type}
-
             </button>        
             </>
         )
