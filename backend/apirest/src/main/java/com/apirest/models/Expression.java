@@ -1,4 +1,4 @@
-package com.apirest.apirest;
+package com.apirest.models;
 
 public class Expression {
 
