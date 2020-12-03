@@ -13,24 +13,21 @@ class Navbar extends Component {
         form: false,
     }
 
-    showSidebar = () => this.setState({ state: !(this.state.sidebar) })
-
     render () {
         return (
             <>
             <IconContext.Provider value={{color: 'black'}}>
-                <div className='navbar' onClick={this.showSidebar}>
+                <div className='navbar' onClick={() => {this.setState({ sidebar: !(this.state.sidebar )})}}>
                     <Link to='#' className='menu-bars'>
                         <FaIcons.FaBars />
                     </Link>
-                    <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>
-                        <button className="select-login-button" onClick={() => {this.setState({ form: false })}}>Login</button>
-                        <button className="select-signin-button" onClick={() => {this.setState({ form: true })}}>Sign In</button>
-                        {this.state.form ? <Sign /> : <Login />}
-                    </nav>
                 </div> 
-                
             </IconContext.Provider>
+            <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>
+                <button className="select-login-button" onClick={() => {this.setState({ sidebar: true, form: false })}}>Login</button>
+                <button className="select-signin-button" onClick={() => {this.setState({ sidebar: true, form: true })}}>Sign In</button>
+                {this.state.form ? <Sign /> : <Login />}
+            </nav>
             </>
         )
     }

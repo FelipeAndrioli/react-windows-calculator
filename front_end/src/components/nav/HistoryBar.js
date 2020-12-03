@@ -6,7 +6,9 @@ export class HistoryBar extends Component {
         return (
             <div>
                 <nav className={this.props.bottombar ? 'nav-bottom active' : 'nav-bottom'}>
-                
+                    <ul>
+                        <li>1 + 1</li>
+                    </ul>
                 </nav>    
             </div>
         )
