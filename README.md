@@ -49,12 +49,19 @@ The calculator design will be the Windows 10 calculator, just because I can see 
 
 ### Front end
 
-To run the front end for now (without containers), just need to have Node JS installed and run the following
-commands inside front end folder:
+To run the front end for now (without containers), just need to have Node JS installed and run the following commands inside front end folder:`
 
+```
 	npm install
 	npm start
+```
 
 And after that just check out the localhost.
 
 ### Back end
+
+To run the back end for now (without containers), need to have Maven installed and run the following commands inside apirest folder:
+
+```
+	mvn spring-boot:run
+```
