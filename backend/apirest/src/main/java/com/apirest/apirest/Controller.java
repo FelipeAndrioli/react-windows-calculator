@@ -1,4 +1,4 @@
-package com.apirest.controller;
+package com.apirest.apirest;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,5 +49,11 @@ public class Controller {
         double result = expression.getResult();
 
         return result;
+    }
+
+    @GetMapping("/Testing")
+    public String getTest() {
+
+        return "Testing";
     }
 }
