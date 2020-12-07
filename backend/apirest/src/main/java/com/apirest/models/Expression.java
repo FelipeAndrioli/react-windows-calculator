@@ -1,7 +1,15 @@
 package com.apirest.models;
 
-public class Expression {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="TB_EXPRESSION")
+public class Expression {
+    
+    @Id
+    private long id;
     private double leftNumber;
     private double rightNumber;
     private char operation;

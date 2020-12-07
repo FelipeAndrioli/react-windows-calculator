@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.apirest.models.Expression;
 
-
 @RestController
 @RequestMapping("/api")
 public class Controller {
