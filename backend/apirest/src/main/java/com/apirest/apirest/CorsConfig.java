@@ -1,4 +1,4 @@
-package com.apirest.cors;
+package com.apirest.apirest;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
