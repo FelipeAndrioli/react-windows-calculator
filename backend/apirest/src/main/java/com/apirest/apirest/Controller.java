@@ -2,12 +2,22 @@ package com.apirest.apirest;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api")
 public class Controller {
+
+    @Autowired
+    UserRepository userRepository;
+
+    @Autowired
+    ExpressionRepository expressionRepository;
+
     @GetMapping("/arithmeticoperation")
     public double getExpressionResult(
         @RequestParam String leftN,
@@ -49,9 +59,13 @@ public class Controller {
         return result;
     }
 
-    @GetMapping("/Testing")
-    public String getTest() {
+    @PostMapping("/SignIn")
+    public User newUser(@RequestBody User user) {
+        return userRepository.save(user);
+    }
 
-        return "Testing";
+    @PostMapping("/Login")
+    public void login(@RequestBody Login login) {
+        
     }
 }
