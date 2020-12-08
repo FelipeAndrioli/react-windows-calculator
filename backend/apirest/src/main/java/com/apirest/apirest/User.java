@@ -1,4 +1,4 @@
-package com.apirest.models;
+package com.apirest.apirest;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
