@@ -34,6 +34,7 @@ public class Login {
     public Boolean validateLogin() {
         boolean validate = false;
 
+        /*
         User validationUser = userRepository.findByUsername(this.username);
         
         if (validationUser != null) {
@@ -41,6 +42,7 @@ public class Login {
                 validate = true;
             }
         }
+        */
 
         return validate;
     }
