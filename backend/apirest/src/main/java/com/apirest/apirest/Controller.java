@@ -65,7 +65,7 @@ public class Controller {
     }
 
     @PostMapping("/Login")
-    public void login(@RequestBody Login login) {
-        
+    public boolean login(@RequestBody Login login) {
+        return login.validateLogin();
     }
 }

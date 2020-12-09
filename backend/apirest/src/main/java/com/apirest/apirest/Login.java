@@ -31,8 +31,16 @@ public class Login {
         return this.password;
     }
 
-    public Boolean validateLogin(Login login) {
+    public Boolean validateLogin() {
         boolean validate = false;
+
+        User validationUser = userRepository.findByUsername(this.username);
+        
+        if (validationUser != null) {
+            if (validationUser.getPassword() == this.password) {
+                validate = true;
+            }
+        }
 
         return validate;
     }
