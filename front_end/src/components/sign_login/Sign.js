@@ -11,16 +11,18 @@ export class Sign extends Component {
     }
 
     handleSignin = async () => {
+        console.log('Requesting...')
 
         await axios.post('http://localhost:8080/api/SignIn', {
-            data: {
-                name: this.state.username,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            body: {                
+                name: this.state.name,
                 email: this.state.email,
                 password: this.state.password,
             },
-            headers: {
-                'Content-Type': 'application/json'
-            }
         })
         .then(response => {
             alert(response)
@@ -49,6 +51,7 @@ export class Sign extends Component {
     }
 
     render() {
+
         return (
             <div className="sign-container">
                 <input type="text" placeholder="username" onChange={this.handleChangeUsername} />
