@@ -11,21 +11,20 @@ export class Sign extends Component {
     }
 
     handleSignin = async () => {
-        console.log('Requesting...')
 
-        await axios.post('http://localhost:8080/api/SignIn', {
+        const user = {
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        await axios.post('http://localhost:8080/api/SignIn', user, {
             headers: {
                 'Content-Type': 'application/json'
             },
-
-            body: {                
-                name: this.state.name,
-                email: this.state.email,
-                password: this.state.password,
-            },
         })
-        .then(response => {
-            alert(response)
+        .then(() => {
+            alert("Welcone " + this.state.username)
         })
         .catch(function(error) {
             alert(error)
