@@ -33,16 +33,19 @@ public class Login {
 
     public Boolean validateLogin() {
         boolean validate = false;
-
-        /*
+        
         User validationUser = userRepository.findByUsername(this.username);
         
+        System.out.println("Validating login...");
+
         if (validationUser != null) {
             if (validationUser.getPassword() == this.password) {
                 validate = true;
+                System.out.println("Login validated!");
             }
+        } else {
+            System.out.println("Login failed!");
         }
-        */
 
         return validate;
     }

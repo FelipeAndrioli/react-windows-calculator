@@ -2,7 +2,15 @@ package com.apirest.apirest;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -66,7 +74,18 @@ public class Controller {
 
     @PostMapping("/Login")
     public boolean login(@RequestBody Login login) {
-        //return login.validateLogin();
-        return false;
+        return login.validateLogin();
+    }
+
+    @ControllerAdvice
+    public class Handler {
+        @ExceptionHandler(Exception.class)
+        public ResponseEntity<Object> handle(Exception ex,
+            HttpServletRequest request, HttpServletResponse response) {
+                if (ex instanceof NullPointerException) {
+                    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+                }
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
     }
 }
