@@ -1,39 +1,63 @@
 package com.apirest.apirest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+@Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-    /*
+
+    @Autowired
+    private ImplementsUserDetailsService userDetailsService;
+
     @Override
     protected void configure (AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-            .withUser("")
-            .password("")
-            .roles("USER");
-            
+        auth.userDetailsService(userDetailsService)
+        .passwordEncoder(new BCryptPasswordEncoder());
     }
-    */
 
     @Override
     protected void configure (HttpSecurity http) throws Exception {
-    
-        http.cors()
+
+        http
+            .authorizeRequests()
+            .anyRequest().permitAll()//.authenticated()
+            .and()
+            .formLogin()
+            .loginPage("/api/login")
+            .permitAll()
+            .and()
+            .cors()
             .and()
             .csrf().disable();
 
-        /*
+        }
 
-        http.authorizeRequests().antMatchers().permitAll();
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
 
-        http.authorizeRequests()
-            .antMatchers("/").permitAll()
-            .antMatchers("/**").hasAnyRole()
-            .and()
-            .formLogin();
-        */
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedHeaders("*")
+                .allowedOrigins("http://localhost:3000");
+            }
+        };
+    }
+
+    @Bean
+    public AuthenticationManager customAuthenticationManager() throws Exception {
+        return authenticationManager();
     }
 }

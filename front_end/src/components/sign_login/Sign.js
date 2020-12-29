@@ -24,7 +24,7 @@ export class Sign extends Component {
             },
         })
         .then(() => {
-            alert("Welcone " + this.state.username)
+            alert("Welcome " + this.state.username)
         })
         .catch(function(error) {
             alert(error)

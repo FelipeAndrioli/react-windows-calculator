@@ -19,6 +19,15 @@ class Calculator extends Component {
         partial_operation: '',
         navbar: false,
         historybar: false,
+        logged: false,
+        logged_username: null
+    }
+
+    handleLogin = (status, username) => {
+        this.setState({
+            logged: status,
+            logged_username: username
+        });
     }
 
     GetResult = async (left, op, right) => {
@@ -38,12 +47,6 @@ class Calculator extends Component {
         .catch(function(error) {
             console.log(error)
         })
-    }
-
-    Placeholder = (expression) => {
-        console.log("Placeholder function: " + expression)
-        let temp = 21
-        return temp
     }
 
     UpdateNavBar = (turn) => {
@@ -192,7 +195,7 @@ class Calculator extends Component {
                 <div className='CalculatorBody'>                    
                     <header className='CalculatorHeader'>Calculator</header>
                     <div className='CalculatorSubHeader'>
-                        <Navbar />
+                        <Navbar action={this.handleLogin} />
                         <div className='title-container'>
                             <p>Standard</p>
                         </div>

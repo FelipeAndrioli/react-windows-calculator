@@ -26,7 +26,7 @@ class Navbar extends Component {
             <nav className={this.state.sidebar ? 'nav-menu active' : 'nav-menu'}>
                 <button className="select-login-button" onClick={() => {this.setState({ sidebar: true, form: false })}}>Login</button>
                 <button className="select-signin-button" onClick={() => {this.setState({ sidebar: true, form: true })}}>Sign In</button>
-                {this.state.form ? <Sign /> : <Login />}
+                {this.state.form ? <Sign /> : <Login action={this.props.action} />}
             </nav>
             </>
         )
