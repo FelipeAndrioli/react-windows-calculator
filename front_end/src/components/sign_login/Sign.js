@@ -25,6 +25,9 @@ export class Sign extends Component {
         })
         .then(() => {
             alert("Welcome " + this.state.username)
+            document.querySelectorAll('input').forEach(
+                input => (input.value = '')
+            );
         })
         .catch(function(error) {
             alert(error)

@@ -24,20 +24,34 @@ export class Login extends Component {
         })
         .then(response => {
             if(response.data.status) {
+
+                document.querySelectorAll('input').forEach(
+                    input => (input.value = '')
+                );
+
                 this.setState({
+                    username: '',
+                    password: '',
                     logged: response.data.status,
                     logged_username: response.data.username
-                })
+                });
 
                 alert('You are logged in! Welcome ' + this.state.logged_username);
                 console.log(response.data.status);
                 console.log(response.data.username);
 
             } else {
+
+                document.querySelectorAll('input').forEach(
+                    input => (input.value = '')
+                );
+
                 this.setState({
+                    username: '',
+                    password: '',
                     logged: response.data.status,
                     logged_username: null
-                })
+                });
 
                 alert('Username or password incorrect!');
             }
